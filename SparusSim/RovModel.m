@@ -37,22 +37,20 @@ Fa = [ Fa_F ; Fa_M ] ;
 
 %% Force de Coriolis
 
-
 p = VitB(4,1)   ;   %Body fixed velocity roll (rad*s^(-1))
 q = VitB(5,1)   ;   %Body fixed velocity pitch (rad*s^(-1))
 r = VitB(6,1)   ;   %Body fixed velocity yaw (rad*s^(-1))
 W_ = [p;q;r]     ;  %General vector
 
-
 % Wb :
 Wb = [  S_(W_)       zeros(3,3) ;
         zeros(3,3)      S_(W_)       ];
-    
+
 % General coriolis matrix :
 C_all = Wb * Para.Mg ;
 
 %coriolis Force :
-Fc = C_all * VitB   ;
+Fc = C_all * VitB ;
 
 %% Friction forces
 Vit_0=VitB;
@@ -67,8 +65,5 @@ Ff_2 =  Para.S0.Kq * abs(Vit_2).*Vit_2 ;
 %% Propulsions Forces
 Fp = Para.Eb * Thrust ;
 
-
 %% Accelearion computation :
 AccG = Para.Mg\ (Ff_0+Ff_1+Ff_2 +Fa + Fg+ Fp- Fc) ; % Mg\ = Mg^-1 computed at the gravity center of the Sparus
-
-
