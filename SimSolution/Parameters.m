@@ -207,7 +207,7 @@ for i = 1:length(Para.S)
     Para.S(i).Mbb = -[Para.S(i).m*eye(3), zeros(3);
             zeros(3), Para.S(i).I];
 
-    Para.S(i).Mb = my_H(Para.S(i).Rb) * Para.S(i).Mbb * my_H(Para.S(i).Rb);
+    Para.S(i).Mb = my_H(Para.S(i).Rb)' * Para.S(i).Mbb * my_H(Para.S(i).Rb);
 
 end; clear i
 
