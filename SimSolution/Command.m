@@ -2,6 +2,6 @@ function [Out] = Command(PosE,VitB,AccB)
 
 % commande nulle
 
-Thrust=[50 50 50];
+Thrust=[100 100 100];
 
 Out=Thrust;
