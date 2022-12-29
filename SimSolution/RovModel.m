@@ -50,6 +50,7 @@ C_all = Wb * Para.Mg ;
 Fc = C_all * VitB ;
 
 %% Friction forces
+%{
 Vit_0=VitB;
 Ff_0 =  Para.S0.Kq * abs(Vit_0).*Vit_0 ;
 
@@ -59,8 +60,24 @@ Ff_1 =  Para.S1.Kq * abs(Vit_1).*Vit_1 ;
 Vit_2=VitB;
 Ff_2 =  Para.S0.Kq * abs(Vit_2).*Vit_2 ;
 
+Fk = Ff_0+Ff_1+Ff_2;
+
+%}
+
+Fk = zeros(6, 1);
+for i = 1:length(Para.S)
+    r = Para.S(i).Rb - Para.S(4).Rb;
+    VelB = my_H(r) * VitB;
+    Para.S(i).Fkk = Para.S(i).K * abs(VelB).*VelB;
+
+    Para.S(i).Fk = my_H(Para.S(i).Rb) * Para.S(i).Fkk;
+
+    Fk = Fk + Para.S(i).Fk;
+    
+end; clear i r VelB
+
 %% Propulsions Forces
 Fp = Para.Eb * Thrust ;
 
 %% Accelearion computation :
-AccG = Para.Mg\ (Ff_0+Ff_1+Ff_2 +Fa + Fg+ Fp- Fc) ; % Mg\ = Mg^-1 computed at the gravity center of the Sparus
+AccG = Para.Mg\ ( Fk +Fa + Fg+ Fp- Fc) ; % Mg\ = Mg^-1 computed at the gravity center of the Sparus
