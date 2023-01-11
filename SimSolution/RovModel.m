@@ -72,7 +72,7 @@ for i = 1:length(Para.S)
 
     Para.S(i).Fk = my_H(Para.S(i).Rb) * Para.S(i).Fkk;
 
-    Fk = Fk + Para.S(i).Fk;
+    Fk = Fk - Para.S(i).Fk;
     
 end; clear i r VelB
 
