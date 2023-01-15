@@ -4,8 +4,9 @@ global Para
 
 %% Initial Speed and position in Earth-fixed frame
 
-Para.ICPos = [0 0 2 0 0 0];
+Para.ICPos = [0 0 20 0 0 0];
 Para.ICSpeed = [0 0 0 0 0 0];
+Para.DVL = [-0.4145, 0, 0.11]';
 
 %% General parameters
 Para.rho_water = 1000 ;                     % Masse volumique de l'eau (kg/m^3)
@@ -391,7 +392,7 @@ Para.Tau = [Para.Tau1;Para.Tau2;Para.Tau3] ;
 
 Para.Eb_F = [0 1 1; 0 0 0; 1 0 0];
     
-Para.Eb_M = [0 0 0; 0 0 0; 0 Para.d2y Para.d3y] ;
+Para.Eb_M = [0 0 0; 0 0 0; 0 -Para.d2y -Para.d3y] ;
 
 Para.Eb = [ Para.Eb_F ; Para.Eb_M ] ;
 

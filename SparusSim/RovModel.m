@@ -37,6 +37,9 @@ Fa = [ Fa_F ; Fa_M ] ;
 
 %% Force de Coriolis
 
+r_gb =  Para.S(0).Rb - Para.DVL
+Vg = my_H(r_gb) * VitB;
+
 p = VitB(4,1)   ;   %Body fixed velocity roll (rad*s^(-1))
 q = VitB(5,1)   ;   %Body fixed velocity pitch (rad*s^(-1))
 r = VitB(6,1)   ;   %Body fixed velocity yaw (rad*s^(-1))
@@ -53,8 +56,12 @@ C_all = Wb * Para.Mg ;
 Fc = C_all * VitB ;
 
 %% Friction forces
-Vit_0=VitB;
-Ff_0 =  Para.S0.Kq * abs(Vit_0).*Vit_0 ;
+
+
+r = r_bi - r_D;
+Vit_0=H(r)*VitB;
+Ff_0_b =  Para.S0.Kq * abs(Vit_0).*Vit_0 ;
+Ff_0_g = H' * Ff_0_b;
 
 Vit_1=VitB;
 Ff_1 =  Para.S1.Kq * abs(Vit_1).*Vit_1 ;
@@ -66,4 +73,4 @@ Ff_2 =  Para.S0.Kq * abs(Vit_2).*Vit_2 ;
 Fp = Para.Eb * Thrust ;
 
 %% Accelearion computation :
-AccG = Para.Mg\ (Ff_0+Ff_1+Ff_2 +Fa + Fg+ Fp- Fc) ; % Mg\ = Mg^-1 computed at the gravity center of the Sparus
+AccG = Para.Mg\ (Ffriction +Fa + Fg+ Fp- Fc) ; % Mg\ = Mg^-1 computed at the gravity center of the Sparus

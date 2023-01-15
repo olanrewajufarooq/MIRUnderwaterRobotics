@@ -5,6 +5,7 @@ global Para
 
 Para.ICPos = [0 0 2 0 0 0];
 Para.ICSpeed = [0 0 0 0 0 0] ;
+Para.DVL =  [];
 
 %% General parameters
 Para.rho_water = 1000 ;                     % Masse volumique de l'eau (kg/m^3)
@@ -106,6 +107,8 @@ Para.S1.Mg = Para.S1.Mb + Para.S1.Ma ;
 Para.S2.Mg = Para.S2.Mb + Para.S2.Ma ;
 
 Para.Mg = Para.S0.Mg + Para.S1.Mg + Para.S2.Mg ;
+
+
 
 
 %% Generalized coriolis matrix

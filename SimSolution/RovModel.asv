@@ -18,7 +18,7 @@ Fg = 1* [-Para.P * sin(theta) ;
     
 % Expressed in b and computed in G
     
-%% Force d'Archimède
+%% Force d'ArchimÃ¨de
 
 Fa_F = [Para.B * sin(theta) ;
         -Para.B * cos(theta)*sin(phi) ;
@@ -72,15 +72,9 @@ end; clear i r VelB Fkb Fkg
 %% Propulsions Forces
 Fp = Para.Eb * Thrust ;
 
-%% Accelearion computation (Testing the Simulator):
+%% Accelearion computation :
 AccG = Para.Mg\ ( Fk +Fa + Fg+ Fp + Fc) ; % Mg\ = Mg^-1 computed at the gravity center of the Sparus
 
-%% Imposing Linear Acceleration.
-%AccG = Para.Mg \ Fp;
-
-
-%% Imposing Linear Speed (Not Solved Yet)
+%% Imposing
 %{
-AccG = Para.Mg \ Fp;
-%}
 
