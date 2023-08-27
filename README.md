@@ -58,7 +58,6 @@ The original simulator is in the `SparusSim` folder (although there are a couple
 2. Implement the command using `SimSolution/command.m` or the matrix input in the Simulink simulation. (Take note of the switch between both modes)
 3. The plotting function is added as a stopFcn() to the Simulink simulation.
 
-
 <!-- CONTACT -->
 ## Contact Contributors
 
@@ -68,7 +67,6 @@ The original simulator is in the `SparusSim` folder (although there are a couple
 For more information on the project analysis, check: `Underwater_Robotics_Report.pdf`
 
 <strong>Supervisor</strong>: Dr. Mathieu Richier, <i>Maitre Conference, Université de Toulon</i>.
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
